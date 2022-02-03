@@ -8,50 +8,105 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='CustomerCL',
+            name="CustomerCL",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('phone', models.CharField(max_length=200)),
-                ('email', models.CharField(max_length=200)),
-                ('date_created', models.DateField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("phone", models.CharField(max_length=200)),
+                ("email", models.CharField(max_length=200)),
+                ("date_created", models.DateField(auto_now_add=True)),
             ],
         ),
         migrations.CreateModel(
-            name='TagCL',
+            name="TagCL",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
-            name='ProductCL',
+            name="ProductCL",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('price', models.PositiveIntegerField()),
-                ('type_clothing', models.TextField()),
-                ('date_created', models.DateField(auto_now_add=True)),
-                ('tags', models.ManyToManyField(to='cloth.TagCL')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("price", models.PositiveIntegerField()),
+                ("type_clothing", models.TextField()),
+                ("date_created", models.DateField(auto_now_add=True)),
+                ("tags", models.ManyToManyField(to="cloth.TagCL")),
             ],
             options={
-                'verbose_name': 'Ткань',
-                'verbose_name_plural': 'Ткани',
+                "verbose_name": "Ткань",
+                "verbose_name_plural": "Ткани",
             },
         ),
         migrations.CreateModel(
-            name='OrderCL',
+            name="OrderCL",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_created', models.DateField(auto_now_add=True)),
-                ('status', models.CharField(choices=[('Обробатывается', 'Обробатывается'), ('На середине пути..', 'На середине пути..'), ('Доставлен', 'Доставлен')], default=True, max_length=200)),
-                ('customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cloth.customercl')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='order_product', to='cloth.productcl')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date_created", models.DateField(auto_now_add=True)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("Обробатывается", "Обробатывается"),
+                            ("На середине пути..", "На середине пути.."),
+                            ("Доставлен", "Доставлен"),
+                        ],
+                        default=True,
+                        max_length=200,
+                    ),
+                ),
+                (
+                    "customer",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="cloth.customercl",
+                    ),
+                ),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="order_product",
+                        to="cloth.productcl",
+                    ),
+                ),
             ],
         ),
     ]

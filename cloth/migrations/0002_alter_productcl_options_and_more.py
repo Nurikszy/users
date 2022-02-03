@@ -6,17 +6,17 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cloth', '0001_initial'),
+        ("cloth", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='productcl',
-            options={'verbose_name': 'Гардероб', 'verbose_name_plural': 'Гардеробы'},
+            name="productcl",
+            options={"verbose_name": "Гардероб", "verbose_name_plural": "Гардеробы"},
         ),
         migrations.RenameField(
-            model_name='productcl',
-            old_name='type_clothing',
-            new_name='discription',
+            model_name="productcl",
+            old_name="type_clothing",
+            new_name="discription",
         ),
     ]
