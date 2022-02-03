@@ -29,33 +29,38 @@ class OrderCreateView(CreateView):
         return super(OrderCreateView, self).form_valid(form=form)
 
 
-class ClothingProductionView(ListView):
-    queryset = models.ProductCL.objects.filter(tags__name="clothing").order_by("-id")
+class ElectronicsProductListView(ListView):
+    queryset = models.ProductCL.objects.filter(
+        tags__name="Electronics").order_by("-id")
     template_name = "cloth_list.html"
 
     def get_queryset(self):
-        return models.ProductCL.objects.filter(tags__name="clothing").order_by("-d")
+        return models.ProductCL.objects.filter(
+            tags__name="Electronics").order_by("-id")
 
-
-class NikeProductView(ListView):
-    queryset = models.ProductCL.objects.filter(tags__name="Nike").order_by("-id")
+class AdidasProductListView(ListView):
+    queryset = models.ProductCL.objects.filter(
+        tags__name="Adidas").order_by("-id")
     template_name = "cloth_list.html"
 
     def get_queryset(self):
-        return models.ProductCL.objects.filter(tags__name="Nike").order_by("-d")
+        return models.ProductCL.objects.filter(
+            tags__name="Adidas").order_by("-id")
 
-
-class AdidasProductView(ListView):
-    queryset = models.ProductCL.objects.filter(tags__name="Adidas").order_by("-id")
+class NikeProductListView(ListView):
+    queryset = models.ProductCL.objects.filter(
+        tags__name="Nike").order_by("-id")
     template_name = "cloth_list.html"
 
     def get_queryset(self):
-        return models.ProductCL.objects.filter(tags__name="Adidas").order_by("-d")
+        return models.ProductCL.objects.filter(
+            tags__name="Nike").order_by("-id")
 
-
-class PumaProductView(ListView):
-    queryset = models.ProductCL.objects.filter(tags__name="Puma").order_by("-id")
+class GeekProductListView(ListView):
+    queryset = models.ProductCL.objects.filter(
+        tags__name="Geek").order_by("-id")
     template_name = "cloth_list.html"
 
     def get_queryset(self):
-        return models.ProductCL.objects.filter(tags__name="Puma").order_by("-d")
+        return models.ProductCL.objects.filter(
+            tags__name="Geek").order_by("-id")
